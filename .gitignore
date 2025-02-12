@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Selenium WebDriver
+chromedriver.log
+chromedriver/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Teste de cobertura
+coverage/
+
+# Diretórios temporários
+.idea/
+.vscode/
