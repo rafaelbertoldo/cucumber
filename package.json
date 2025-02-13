@@ -1,21 +1,8 @@
-{
-  "name": "cucumber",
-  "version": "1.0.0",
-  "description": "",
-  "main": "cucumber.js",
-
-  "scripts": {
-    "test": "npx cucumber-js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
+{"type": "module",
+  "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "chai": "^5.1.2",
     "chromedriver": "^133.0.0",
     "selenium-webdriver": "^4.28.1"
   }
 }
-
-
