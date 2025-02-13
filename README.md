@@ -54,4 +54,12 @@ When('{maker} starts a game', maker => {
 })
 ```
 
+# Para executar esse projeto
+
+```bash
+npm install
+```
+
+## Mas se quiser executar a instalação manualmente
+
 [Próximo passo... Instalação](./docs/install.md)

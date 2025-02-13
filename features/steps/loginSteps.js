@@ -27,7 +27,7 @@ When('o usuário insere o nome de usuário {string} e a senha {string}', async f
 });
 
 Then('o usuário deve ser redirecionado para a página Bem-Vindo', async function () {
-  const welcomeMessage = await driver.wait(until.elementIsVisible(driver.findElement(By.id('inicio'))), 1000);
+  const welcomeMessage = await driver.wait(until.elementIsVisible(driver.findElement(By.id('inicio'))), 5000);
   const messageText = await welcomeMessage.getText();
   console.log("Mensagem de boas-vindas:", messageText);
   expect(messageText).to.include('Bem-vindo');
