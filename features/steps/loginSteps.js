@@ -19,7 +19,7 @@ Given('que o usuário está na página de login', async function () {
 When('o usuário insere o nome de usuário {string} e a senha {string}', async function (username, password) {
   const usernameField = await driver.findElement(By.id('username'));
   const passwordField = await driver.findElement(By.id('password'));
-  const loginButton = await driver.findElement(By.xpath("//button[contains(text(),'Entrar')]"));
+  const loginButton = await driver.findElement(By.id('button'));
 
   await usernameField.sendKeys(username);
   await passwordField.sendKeys(password);
