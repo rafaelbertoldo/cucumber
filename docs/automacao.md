@@ -78,7 +78,7 @@ After(async function () {
 
 ```
 
-## Em seguida, defina a browserpropriedade ao executar o Cucumber:
+## Em seguida, defina a propriedade do browser ao executar o Cucumber:
 
 ```bash
 mvn test -Dbrowser=chrome

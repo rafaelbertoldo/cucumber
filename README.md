@@ -2,13 +2,7 @@
 
 https://cucumber.io/
 
-O Cucumber  permite que você escreva testes automatizados em linguagem simples
-
-https://cucumber.io/docs
-
-## Introdução
-
-Cucumber é uma ferramenta que dá suporte ao Behaviour-Driven Development (BDD) . Se você é novo no Behaviour-Driven Development, leia nossa introdução ao BDD primeiro.
+Cucumber é uma ferramenta que dá suporte ao Behaviour-Driven Development (BDD) . Se você é novo no Behaviour-Driven Development, [leia nossa introdução ao BDD primeiro](./docs/bdd.md).
 
 ## O que é Cucumber 
 
@@ -16,11 +10,15 @@ Ok, agora que você sabe que o BDD é sobre descoberta, colaboração e exemplos
 
 O Cucumber lê especificações executáveis ​​escritas em texto simples e valida se o software faz o que essas especificações dizem. As especificações consistem em múltiplos exemplos , ou cenários . Por exemplo:
 
-```yaml
-Scenario: Breaker guesses a word
-  Given the Maker has chosen a word
-  When the Breaker makes a guess
-  Then the Maker is asked to score
+```gherkin
+Feature: Login de usuário
+  
+  Rule: O usuário só poderá acessar a página inicial se o login for bem-sucedido
+
+    Scenario: Login com credenciais válidas
+      Given que o usuário está na página de login
+      When o usuário insere o nome de usuário "usuario@example.com" e a senha "senha123"
+      Then o usuário deve ser redirecionado para a página de boas-vindas
 ```
 
 Cada cenário é uma lista de etapas para o Cucumber trabalhar. 
