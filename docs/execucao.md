@@ -1,4 +1,4 @@
-# Executando o Cucucmber
+# Executando o teste
 
 ## Para executar o Teste
 
@@ -9,11 +9,10 @@ npx cucumber-js
 ## Resposta esperada
 
 ```bash
-...Mensagem de boas-vindas: Bem-vindo
-Esta página foi criada para auxiliar nos projetos de testes automatizados.
-.......
+npx cucumber-js                                       
+...............
 
-2 scenarios (2 passed)
-6 steps (6 passed)
-0m05.646s (executing steps: 0m05.629s)
+3 scenarios (3 passed)
+9 steps (9 passed)
+0m31.857s (executing steps: 0m29.093s)
 ```
