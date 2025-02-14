@@ -1,8 +1,23 @@
 # Criando a Automação de Testes
 
-Para automatizar os testes com Cucumber.js e Selenium WebDriver, começamos criando o arquivo `.feature`, que descreve os cenários de teste utilizando a linguagem **Gherkin** (usada no BDD - Behavior Driven Development).
+Para automatizar os testes com Cucumber.js e Selenium WebDriver, precisamos criar a estrutura do projeto.
 
-## 1. Criando o Arquivo `.feature`
+## 1. A estrutura do projeto será semelhante à seguinte:
+
+```
+.
+features
+├── login.feature
+└── steps
+    └── loginSteps.js
+```
+
+Nesta estrutura, temos o arquivo `login.feature` dentro da pasta `features` e o arquivo `loginSteps.js` dentro da pasta `steps`.
+
+No arquivo `.feature`, que descreve os cenários de teste utilizando a linguagem **Gherkin** (usada no BDD - Behavior Driven Development).
+
+
+## 2. Criando o Arquivo `.feature`
 
 O arquivo `.feature` contém os cenários de teste escritos em Gherkin, uma linguagem simples e legível, que descreve as funcionalidades e comportamentos esperados do sistema. Vamos criar um arquivo de exemplo chamado `login.feature`.
 
@@ -29,7 +44,7 @@ Feature: Teste de Login
 
 No exemplo acima, temos três cenários de teste relacionados ao processo de login de um usuário, cobrindo diferentes fluxos e comportamentos esperados.
 
-## 2. Criando os Passos de Automação
+## 3. Criando os Passos de Automação
 
 Após criar o arquivo `.feature`, é necessário criar um arquivo de "steps", onde você irá definir a implementação dos passos descritos no arquivo `.feature`. Vamos criar o arquivo `loginSteps.js`, que será responsável por automatizar os passos definidos no `.feature` utilizando o Selenium WebDriver.
 
@@ -105,20 +120,6 @@ After(async function () {
 ```
 
 Neste arquivo, estamos utilizando o **Selenium WebDriver** para interagir com a página de login e o **Chai** para realizar as asserções, verificando se os resultados estão corretos. A estrutura do código é baseada nos **hooks** do Cucumber, como `Before`, `After`, e os passos `Given`, `When`, `Then`, que correspondem aos cenários definidos no arquivo `.feature`.
-
-## 3. Estrutura do Projeto
-
-A estrutura do projeto será semelhante à seguinte:
-
-```
-.
-features
-├── login.feature
-└── steps
-    └── loginSteps.js
-```
-
-Nesta estrutura, temos o arquivo `login.feature` dentro da pasta `features` e o arquivo `loginSteps.js` dentro da pasta `steps`.
 
 ## Próximos Passos: Execução com Cucumber.js
 
