@@ -4,6 +4,8 @@ Esta seção detalha os passos necessários para configurar um ambiente de teste
 
 ## 1. Inicializar um Projeto Node.js
 
+> Precisamos ter o [node.js](node.md) instalado!!!
+
 Para começar, crie um novo projeto Node.js ou inicie um projeto existente. Caso não tenha um projeto ainda, você pode inicializar um novo com o seguinte comando:
 
 ```bash
@@ -52,6 +54,30 @@ sudo apt upgrade google-chrome-stable
 ```
 
 Isso atualizará o Google Chrome para a versão mais recente, o que pode ser importante para a compatibilidade com o `chromedriver`.
+
+
+Para as versões do NODE mais atualizadas, precisamos adicionar o `"type": "module",` no arquivo `package.json`.
+
+```json
+{
+    "type": "module",
+    "devDependencies": {
+        "@cucumber/cucumber": "^11.2.0",
+        "chai": "^5.1.2",
+        "chromedriver": "^133.0.1",
+        "selenium-webdriver": "^4.28.1"
+    }
+}
+```
+
+Essa alteração evitará o erro:
+
+```bash
+(node:63889) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/rfahham/projetos/cucumber/features/steps/loginSteps.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/rfahham/projetos/cucumber/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+```
 
 ---
 
