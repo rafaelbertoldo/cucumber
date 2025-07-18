@@ -3,7 +3,7 @@ import { Builder, By, Capabilities, Key, until } from 'selenium-webdriver';
 import { expect } from 'chai';
 import { setDefaultTimeout } from '@cucumber/cucumber';
 
-setDefaultTimeout(20000); // 20 segundos
+setDefaultTimeout(20000);
 
 
 // Declarar a variável 'driver' fora para ser acessada em todos os hooks.
@@ -45,19 +45,22 @@ Then('o usuário deve ser redirecionado para a página Bem-Vindo', async functio
 });
 
 
-/*Then('o sistema deve exibir uma mensagem de erro de login', async function () {
-  const errorMessage = await driver.findElement(By.id('error-message'));
-  const errorText = await errorMessage.getText();
-  // console.log("Mensagem informando o erro:", errorText);
-  expect(errorText).to.include('E-mail ou senha inválidos!');
+Then('o sistema deve exibir uma mensagem de erro de login', async function () {
+  const alertElement = await driver.wait(
+  until.elementLocated(By.css("[role='alert']")),
+  10000
+);
+  const errorText = await alertElement.getText();
+  console.log("Mensagem informando o erro:", errorText);
+  expect(errorText).to.include('Invalid credentials');
   await driver.sleep(2000);
 });
 
 
 When('o usuário não insere o nome de usuário e senha', async function () {
-  const usernameField = await driver.findElement(By.id('username'));
-  const passwordField = await driver.findElement(By.id('password'));
-  const loginButton = await driver.findElement(By.id('button'));
+  const usernameField = await driver.wait(until.elementLocated(By.name('username')), 10000);
+  const passwordField = await driver.wait(until.elementLocated(By.name('password')), 10000);
+  const loginButton = await driver.wait(until.elementLocated(By.css('button[type="submit"]')), 10000);
   
   // Deixar os campos vazios, sem preencher
   await usernameField.clear();
@@ -69,10 +72,13 @@ When('o usuário não insere o nome de usuário e senha', async function () {
 });
 
 Then('o sistema deve exibir uma mensagem de erro informando que os dados são obrigatórios', async function () {
-  const errorMessage = await driver.wait(until.elementLocated(By.id('error-message')), 5000);
-  const errorText = await errorMessage.getText();
-  // console.log("Mensagem informando o erro:", errorText);
-  expect(errorText).to.include('E-mail e senha são obrigatórios!');
+  const spanElements = await driver.wait(
+    until.elementsLocated(By.css('.oxd-text--span')),
+    5000
+  );
+
+  expect(spanElements.length).to.be.at.least(2);
+  console.log(`Foram encontrados ${spanElements.length} elementos com a classe .oxd-text--span`);
 });
 
 // Fechar o navegador após cada cenário
@@ -80,4 +86,4 @@ After(async function () {
   if (driver) {
     await driver.quit();  
   }
-});*/
+});
