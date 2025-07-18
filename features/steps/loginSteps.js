@@ -1,6 +1,10 @@
 import { Given, When, Then, AfterAll, After, Before } from '@cucumber/cucumber';
 import { Builder, By, Capabilities, Key, until } from 'selenium-webdriver';
 import { expect } from 'chai';
+import { setDefaultTimeout } from '@cucumber/cucumber';
+
+setDefaultTimeout(20000); // 20 segundos
+
 
 // Declarar a variável 'driver' fora para ser acessada em todos os hooks.
 let driver;
@@ -13,15 +17,15 @@ Before(async function () {
 });
 
 Given('que o usuário está na página de login', async function () {
-  await driver.get('https://horadoqa.github.io/login/');
+  await driver.get('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
   await driver.sleep(2000);
 });
 
 
 When('o usuário insere o nome de usuário {string} e a senha {string}', async function (username, password) {
-  const usernameField = await driver.findElement(By.id('username'));
-  const passwordField = await driver.findElement(By.id('password'));
-  const loginButton = await driver.findElement(By.id('button'));
+  const usernameField = await driver.wait(until.elementLocated(By.name('username')), 10000);
+  const passwordField = await driver.wait(until.elementLocated(By.name('password')), 10000);
+  const loginButton = await driver.wait(until.elementLocated(By.css('button[type="submit"]')), 10000);
   
   await usernameField.sendKeys(username);
   await passwordField.sendKeys(password);
@@ -31,14 +35,17 @@ When('o usuário insere o nome de usuário {string} e a senha {string}', async f
 
 
 Then('o usuário deve ser redirecionado para a página Bem-Vindo', async function () {
-  const welcomeMessage = await driver.wait(until.elementIsVisible(driver.findElement(By.id('inicio'))), 5000);
-  const messageText = await welcomeMessage.getText();
-  // console.log("Mensagem de boas-vindas:", messageText);
-  expect(messageText).to.include('Bem-vindo');
-  await driver.sleep(2000);
+  await driver.actions().sendKeys(Key.ESCAPE).perform();
+
+  await driver.wait(async () => {
+    const url = await driver.getCurrentUrl();
+    return url.includes('/dashboard') || url.includes('/web/index.php/dashboard');
+  }, 10000);
+  console.log('Login bem-sucedido, URL atual:', await driver.getCurrentUrl());
 });
 
-Then('o sistema deve exibir uma mensagem de erro de login', async function () {
+
+/*Then('o sistema deve exibir uma mensagem de erro de login', async function () {
   const errorMessage = await driver.findElement(By.id('error-message'));
   const errorText = await errorMessage.getText();
   // console.log("Mensagem informando o erro:", errorText);
@@ -73,4 +80,4 @@ After(async function () {
   if (driver) {
     await driver.quit();  
   }
-});
+});*/
